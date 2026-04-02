@@ -389,13 +389,13 @@ nav {
     /* background-color: red; */
     /* Optional: Add a slight delay for each link to appear one by one */
     opacity: 0;
-    transform: translateX(10px);
+    transform: translateY(10px);
     transition: 0.3s ease-in-out;
   }
 
   .nav-links.show li {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
   .menu-bar {
     display: flex;
