@@ -45,8 +45,27 @@ body {
 [lang="ar"] .logo-text {
   font-weight: 600;
 }
+[lang="ar"] .hero {
+  direction: rtl;
+  padding: 30px 20px 0px 0px; /* عكس البادينج للغة العربية */
+}
+[lang="ar"] .hero-img {
+  left: 0;
+  right: auto;
+  direction: rtl;
+}
+[lang="ar"] .hero-btns {
+  justify-content: start;
+}
+[lang="ar"] .hero-img img {
+  direction: rtl;
+  transform: scaleX(-1);
+}
+
 [lang="ar"],
 [lang="ar"] body,
+[lang="ar"] .hero-text,
+[lang="ar"] .hero-text button,
 [lang="ar"] .whatsapp-nav,
 [lang="ar"] .logo-text {
   font-family: var(--font-ar) !important;
@@ -180,13 +199,14 @@ nav {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: brightness(100%) blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.9);
   min-width: 150px;
   border-radius: 15px;
   box-shadow: 0 0px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   z-index: 10000;
+  transition: all 0.3s ease;
 }
 
 /* ضبط اتجاه القائمة في العربي */
@@ -309,7 +329,7 @@ nav {
     transform: translateY(0px); /* Start 20px higher */
     transition: all 0.4s ease; /* Smooth easing */
     pointer-events: none; /* Prevents clicking links while hidden */
-    z-index: 999;
+    z-index: 9999;
     a {
       display: block;
       color: var(--bg-light);
@@ -376,16 +396,20 @@ nav {
   overflow: hidden;
   min-height: 400px;
   padding: 60px 80px;
+  direction: ltr;
 }
 
 .hero-text {
   width: 55%; /* Give text a bit more room */
-  z-index: 2;  /* Keep text above image on small screens */
+  z-index: 2; /* Keep text above image on small screens */
   position: relative;
+  font-family: var(--font-en2);
+  button {
+    font-family: var(--font-en2);
+  }
 }
 
 .hero-text h1 {
-  font-family: var(--font-en2);
   font-size: 3.5rem;
   font-weight: 700;
   line-height: 1.1;
@@ -403,10 +427,10 @@ nav {
 .btn-dark {
   background: var(--dark);
   color: white;
-  padding: 18px 40px;
+  padding: 18px 30px;
   border-radius: 40px;
   border: none;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: transform 0.2s;
@@ -420,7 +444,7 @@ nav {
   background: transparent;
   border: none;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   cursor: pointer;
   color: var(--dark);
 }
@@ -447,7 +471,7 @@ nav {
 
 /* For Tablets and smaller Desktops */
 @media (max-width: 1500px) {
-  .hero{
+  .hero {
     min-height: 650px;
     flex-direction: column;
   }
@@ -488,7 +512,7 @@ nav {
     /* height: 300px; */
     margin-top: 20px;
   }
-  
+
   .hero-img img {
     width: 100%;
     object-fit: cover;
