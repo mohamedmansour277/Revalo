@@ -126,8 +126,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 20px 5%;
-  position: fixed;
-  width: 100%;
+  position: sticky;
   top: 0;
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(20px) saturate(180%) brightness(100%);
@@ -425,7 +424,7 @@ nav {
 
 .hero {
   position: relative;
-  margin: 100px 5% 0px;
+  margin: 20px 5% 0px;
   background: var(--gra);
   border-radius: 40px;
   display: flex;
