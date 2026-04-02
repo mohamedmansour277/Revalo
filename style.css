@@ -137,6 +137,7 @@ nav {
 
 .dropbtn {
   background: var(--bg-light);
+  color: var(--dark);
   border: 0;
   padding: 10px;
   border-radius: 50px;
