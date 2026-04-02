@@ -1,13 +1,26 @@
 :root {
   --primary: #f8cc9d;
+  /* --dark: #1a1a1a; */
   --dark: #1a1a1a;
-  --gra: linear-gradient(330deg,var(--bg-light) ,#FFD7A4 );
+  --gra: linear-gradient(330deg, var(--bg-light), #ffd7a4);
   --bg-light: #f5f5f5;
   --glass: rgba(255, 255, 255, 0.1);
   --ease: cubic-bezier(0.42, 0, 0.58, 1);
   --font-en: "Raleway", sans-serif;
-  --font-en2: cursive, sans-serif;
+  --font-en2: "Righteous", sans-serif;
   --font-ar: "Tajawal", sans-serif;
+}
+/* --- ANIMATIONS --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 1s var(--ease),
+    transform 1s var(--ease);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 * {
@@ -24,18 +37,19 @@ body {
   /* overflow-x: hidden; */
 }
 
-
 /* عندما تتحول اللغة للعربية */
 [lang="ar"] .nav-links a::after {
   left: auto;
   right: 0;
 }
+[lang="ar"] .logo-text {
+  font-weight: 600;
+}
 [lang="ar"],
 [lang="ar"] body,
-[lang="ar"] .logo-text{
-  font-family: var(
-    --font-ar
-  ) !important;
+[lang="ar"] .whatsapp-nav,
+[lang="ar"] .logo-text {
+  font-family: var(--font-ar) !important;
   text-align: right;
 }
 .dropdown-content.show {
@@ -58,8 +72,8 @@ nav {
   padding: 20px 5%;
   position: sticky;
   top: 0;
-  background: var(--glass);
-  backdrop-filter: blur(15px) saturate(180%) brightness(100%);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px) saturate(180%) brightness(100%);
   z-index: 1000;
 }
 
@@ -77,10 +91,12 @@ nav {
     height: 35px;
   }
   .logo-text {
+    margin-top: 10px;
     font-family: var(--font-en2);
+    color: var(--dark) !important;
     display: block;
     font-size: 1.25rem;
-    font-weight: 900;
+    /* font-weight: 100; */
     color: var(--dark);
   }
 }
@@ -136,7 +152,7 @@ nav {
 }
 
 .dropbtn {
-  background: var(--bg-light);
+  background: rgba(255, 0, 0, 0);
   color: var(--dark);
   border: 0;
   padding: 10px;
@@ -164,7 +180,7 @@ nav {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  backdrop-filter: blur(10) brightness(0.5);
+  backdrop-filter: blur(20px);
   background: rgba(255, 255, 255, 0.2);
   min-width: 150px;
   border-radius: 15px;
@@ -208,6 +224,7 @@ nav {
   align-items: center;
   gap: 8px;
   font-weight: 400;
+  font-family: var(--font-en2);
   span {
     font-size: 1rem;
     font-weight: 500;
@@ -246,9 +263,9 @@ nav {
     width: 0%;
   }
   .whatsapp-nav:hover {
-  background: #ffffff00;
-  color: #25d366;
-}
+    background: #ffffff00;
+    color: #25d366;
+  }
   .whatsapp-nav {
     transition: all 0.4s ease;
     width: 35px;
@@ -346,3 +363,135 @@ nav {
 /////////////// hero section Home //////////////////// 
 //////////////////////////////////////////////////////
 */
+/* -/* --- HERO SECTION --- */
+
+.hero {
+  position: relative;
+  margin: 20px 5%;
+  background: var(--gra);
+  border-radius: 40px;
+  display: flex;
+  align-items: center; /* Vertically centers text */
+  justify-content: flex-start;
+  overflow: hidden;
+  min-height: 400px;
+  padding: 60px 80px;
+}
+
+.hero-text {
+  width: 55%; /* Give text a bit more room */
+  z-index: 2;  /* Keep text above image on small screens */
+  position: relative;
+}
+
+.hero-text h1 {
+  font-family: var(--font-en2);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  color: var(--dark);
+  max-width: 800px;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.btn-dark {
+  background: var(--dark);
+  color: white;
+  padding: 18px 40px;
+  border-radius: 40px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-dark:hover {
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--dark);
+}
+
+.hero-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 65%; /* Controls how much space building takes */
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.hero-img img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* --- RESPONSIVE --- */
+
+/* For Tablets and smaller Desktops */
+@media (max-width: 1500px) {
+  .hero{
+    min-height: 650px;
+    flex-direction: column;
+  }
+  .hero-text h1 {
+    font-size: 2.8rem;
+  }
+  .hero-text {
+    margin-bottom: 50px;
+    width: 100%;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    padding: 30px 0px 0px 10px; /* Remove bottom padding to let img touch edge */
+    min-height: 100px;
+    text-align: center;
+  }
+
+  .hero-text {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-btns {
+    justify-content: center;
+  }
+
+  .hero-img {
+    position: relative; /* Switch from absolute to relative for mobile stacking */
+    width: 100%;
+    /* height: 300px; */
+    margin-top: 20px;
+  }
+  
+  .hero-img img {
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+}

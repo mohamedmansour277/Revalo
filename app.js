@@ -159,3 +159,21 @@ const observer = new IntersectionObserver((entries) => {
 sections.forEach((section) => {
   observer.observe(section);
 });
+
+
+
+// Scroll Animation
+        const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // لما العنصر يدخل الشاشة
+            entry.target.classList.add('active');
+        } else {
+            // لما العنصر يخرج من الشاشة (سواء طالع أو نازل)
+            entry.target.classList.remove('active');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
