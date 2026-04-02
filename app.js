@@ -138,7 +138,7 @@ const sections = document.querySelectorAll("section"); // تأكد إن السك
 const navItems = document.querySelectorAll(".nav-links a");
 
 const options = {
-  threshold: 0.6, // السكشن يعتبر نشط لما يظهر 60% منه على الشاشة
+  threshold: 1, // السكشن يعتبر نشط لما يظهر 60% منه على الشاشة
 };
 
 const observer = new IntersectionObserver((entries) => {
