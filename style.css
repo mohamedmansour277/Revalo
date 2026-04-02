@@ -308,7 +308,7 @@ nav {
     border-radius: 20px;
     display: flex;
     width: 27px;
-    height: 3px;
+    height: 2px;
     background-color: var(--dark);
     margin: 4px 0;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
