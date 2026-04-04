@@ -448,7 +448,7 @@ nav {
 
 .hero {
   position: relative;
-  margin: 50px 5% 0px;
+  margin: 40px 5% 0px;
   background: var(--gra);
   border-radius: 40px;
   display: flex;
