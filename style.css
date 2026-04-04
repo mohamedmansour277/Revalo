@@ -917,3 +917,14 @@ nav {
   opacity: 1;
   visibility: visible;
 }
+
+@media (max-width: 370px) {
+  .hero-btns button {
+    font-size: .7rem;
+    /* gap: 10px; */
+    /* color: red; */
+  }
+  .hero-btns{
+    gap: 10px;
+  }
+}
