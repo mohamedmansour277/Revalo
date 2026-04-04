@@ -103,7 +103,9 @@ html {
 }
 [lang="ar"] .mode {
   position: absolute;
-  top: 40px;
+  top: -10px;
+  /* top: 0px; */
+  /* bottom: -10px; */
   right: auto;
   left: 20px;
   /* background: red; */
