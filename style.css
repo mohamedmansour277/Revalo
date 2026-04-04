@@ -5,6 +5,7 @@
 }
 :root {
   --primary: #f8cc9d;
+  /* --primary: #ED4C5C; */
   /* --dark: #1a1a1a; */
   --dark: #1a1a1a;
   --gra: linear-gradient(330deg, var(--bg-light), #ffd7a4);
@@ -29,8 +30,8 @@
   opacity: 0;
   transform: translateY(30px);
   transition:
-    opacity 1.5s var(--ease),
-    transform 1s var(--ease);
+    opacity 1s var(--ease),
+    transform .75s var(--ease);
 }
 .reveal.active {
   opacity: 1;
@@ -206,7 +207,7 @@ nav {
   width: fit-content;
   svg {
     display: block;
-    width: 35px;
+    width: 100px;
     height: 35px;
   }
   .logo-text {
@@ -214,7 +215,7 @@ nav {
     font-family: var(--font-en2);
     color: var(--dark) !important;
     display: block;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     /* font-weight: 100; */
     color: var(--dark);
   }
@@ -379,6 +380,9 @@ nav {
 }
 
 @media (max-width: 768px) {
+  .logo-text {
+    font-size: 1.3rem;
+  }
   .nav-links a:hover::after,
   .nav-links a.active::after {
     width: 0%;
