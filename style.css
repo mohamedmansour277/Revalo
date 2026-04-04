@@ -804,6 +804,7 @@ nav {
   border-radius: 20px;
   border: none;
   background: #eee;
+  color: var(--dark);
   cursor: pointer;
   font-family: var(--font-en2);
   font-weight: 600;
