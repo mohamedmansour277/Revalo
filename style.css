@@ -54,6 +54,47 @@ html {
   left: auto;
   right: 0;
 }
+[lang="ar"] .tab.insta {
+
+
+    &::after {
+      
+      padding: 10px 10px 10px 0px;
+      content: "يله انستا ←";
+      position: absolute;
+      border-radius: 20px;
+      top: 0;
+      right: 100%;
+      width: 100%;
+      height: 50%;
+      background-color: #f58f8f;
+      transition: all 0.3s ease;
+    }
+    &:hover{
+      &::after {
+        right: 0%;
+      }
+    }
+}
+[lang="ar"] .tab.active {
+    &::after {
+      padding: 10px 10px 10px 0px;
+      content: "يله واتس ←";
+      position: absolute;
+      border-radius: 20px;
+      top: 0;
+      right: 100%;
+      width: 100%;
+      height: 50%;
+      background-color: #25d366;
+      transition: all 0.3s ease;
+    }
+    &:hover{
+      &::after {
+        right: 0%;
+      }
+    }
+}
 [lang="ar"] .mode {
   position: absolute;
   top: 40px;
@@ -62,7 +103,6 @@ html {
   /* background: red; */
   display: flex;
   justify-content: space-between;
-
 }
 [lang="ar"] .stat-card {
   border: 4px solid rgb(255, 255, 255);
@@ -151,8 +191,8 @@ nav {
   width: 100%;
   top: 0;
   left: 0;
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(20px) saturate(180%) brightness(100%);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(50px) saturate(200%) brightness(100%) sepia(0);
   z-index: 1000;
 }
 
@@ -376,7 +416,7 @@ nav {
     gap: 30px;
     /* Position the menu */
     position: absolute;
-    top: 90%;
+    top: 80%;
     right: 0;
     width: 100%;
     background: var(--dark);
@@ -512,11 +552,11 @@ nav {
   font-size: 0.9rem;
   cursor: pointer;
   color: var(--dark);
-  box-shadow:inset 0px 0px 0px 2px rgb(42, 42, 42);
+  box-shadow: inset 0px 0px 0px 2px rgb(42, 42, 42);
   transition: all 0.3s ease;
   &:hover {
     background: rgba(0, 0, 0, 0.2);
-    box-shadow:inset 0px 0px 0px 2px rgb(42, 42, 42);
+    box-shadow: inset 0px 0px 0px 2px rgb(42, 42, 42);
   }
 }
 
@@ -653,7 +693,7 @@ nav {
 .stats {
   display: flex;
   gap: 10px;
-  padding: 50px 5%;
+  padding: 50px 5% 0px;
   flex-wrap: wrap;
 }
 .stat-card {
@@ -712,7 +752,7 @@ nav {
 /* --- ABOUT SECTION --- */
 .about-section {
   /* background-color: #fffbc4; */
-  padding: 80px 5%;
+  padding: 60px 5%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
@@ -740,14 +780,13 @@ nav {
     width: 180px !important;
     height: 180px;
   }
-
 }
 
 .about-content h4 {
   color: #888;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-weight: 600;
 }
 .about-content h2 {
@@ -770,9 +809,55 @@ nav {
   font-weight: 600;
 }
 .tab.active {
+  position: relative;
   background: var(--primary);
+  transition: all 0.3s ease;
+  overflow: hidden;
+
+    &::after {
+      
+      padding: 10px 0px 10px 10px;
+      content: "Go WhatsApp →";
+      position: absolute;
+      border-radius: 20px;
+      top: 0;
+      right: 100%;
+      width: 100%;
+      height: 50%;
+      background-color: #25d366;
+      transition: all 0.3s ease;
+    }
+    &:hover{
+      &::after {
+        right: 0%;
+      }
+    }
 }
-.about-content P{
+.tab.insta {
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+
+    &::after {
+      
+      padding: 10px 0px 10px 10px;
+      content: "Go Instagram →";
+      position: absolute;
+      border-radius: 20px;
+      top: 0;
+      right: 100%;
+      width: 100%;
+      height: 50%;
+      background-color: #f58f8f;
+      transition: all 0.3s ease;
+    }
+    &:hover{
+      &::after {
+        right: 0%;
+      }
+    }
+}
+.about-content P {
   font-size: 1.1rem;
   /* background-color: rgba(56, 56, 56, 0.1);
   padding: 10px 5px;
@@ -784,4 +869,38 @@ nav {
   .about-section {
     grid-template-columns: 1fr;
   }
+  .img-small {
+    width: 130px !important;
+    height: 130px;
+    border: 5px solid white;
+    right: -12px;
+    &:hover {
+      width: 150px !important;
+      height: 150px;
+    }
+  }
+  .about-content h2 {
+    font-size: 2.3rem;
+  }
+}
+
+/* for menu overlay */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 31, 31, 0.5); /* لون أسود شفاف */
+  backdrop-filter: blur(4px); /* إضافة غبش خفيف للموقع ورا المنيو */
+  z-index: 998; /* لازم يكون أقل من الـ Nav Links (اللي هي 1000) */
+  opacity: 0; /* مخفي */
+  visibility: hidden; /* غير قابل للتفاعل */
+  transition: 0.3s ease;
+}
+
+/* لما المنيو تفتح هنضيف الكلاس ده بالـ JS */
+.menu-overlay.show {
+  opacity: 1;
+  visibility: visible;
 }

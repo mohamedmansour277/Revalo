@@ -120,17 +120,28 @@ document.addEventListener("DOMContentLoaded", () => {
 // --- 2. إدارة القائمة الجانبية (Mobile Menu) ---
 const menuBar = document.getElementById("menuBar");
 const navLinks = document.getElementById("navLinks");
+const menuOverlay = document.getElementById("menuOverlay"); // العنصر الجديد
 
+// وظيفة القفل الموحدة
+function closeMenu() {
+  menuBar.classList.remove("active");
+  navLinks.classList.remove("show");
+  menuOverlay.classList.remove("show");
+}
+
+// فتح/قفل عند الضغط على زر الهامبرجر
 menuBar.addEventListener("click", () => {
   menuBar.classList.toggle("active");
   navLinks.classList.toggle("show");
+  menuOverlay.classList.toggle("show"); // يظهر مع المنيو
 });
 
-document.querySelectorAll(".nav-links a").forEach((link) => {
-  link.addEventListener("click", () => {
-    menuBar.classList.remove("active");
-    navLinks.classList.remove("show");
-  });
+// إغلاق عند الضغط على الـ Overlay نفسه (أي مكان بره المنيو)
+menuOverlay.addEventListener("click", closeMenu);
+
+// إغلاق عند الضغط على أي رابط
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", closeMenu);
 });
 
 // --- 3. تمييز السكشن النشط (Scroll Spy) ---
@@ -170,10 +181,39 @@ sections.forEach((section) => {
             entry.target.classList.add('active');
         } else {
             // لما العنصر يخرج من الشاشة (سواء طالع أو نازل)
-            entry.target.classList.remove('active');
+            // entry.target.classList.remove('active');
         }
     });
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+
+document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault(); // نوقف السلوك الافتراضي عشان نتحكم في المسافة
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            const navHeight = document.querySelector('nav').offsetHeight;
+            const windowHeight = window.innerHeight;
+            let offsetPosition;
+
+            // لو السكشن هو الأول (الـ Hero)
+            if (targetId === "#home" || targetElement === document.querySelector('section:first-of-type')) {
+                offsetPosition = targetElement.offsetTop - navHeight;
+            } else {
+                // باقي السكاشن: تظهر في "تاني ربع الشاشة" 
+                // بنطرح ربع ارتفاع الشاشة عشان السكشن ينزل لتحت
+                offsetPosition = targetElement.offsetTop - (windowHeight * 0.08);
+            }
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
