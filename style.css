@@ -31,7 +31,7 @@
   transform: translateY(30px);
   transition:
     opacity 1s var(--ease),
-    transform .75s var(--ease);
+    transform 0.75s var(--ease);
 }
 .reveal.active {
   opacity: 1;
@@ -63,43 +63,42 @@ html {
   font-size: 1.1rem;
 }
 [lang="ar"] .tab.insta {
+  &::after {
+    padding: 10px 10px 10px 0px;
+    content: "يله انستا ←";
+    position: absolute;
+    border-radius: 20px;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 50%;
+    background-color: #f58f8f;
+    transition: all 0.3s ease;
+  }
+  &:hover {
     &::after {
-      
-      padding: 10px 10px 10px 0px;
-      content: "يله انستا ←";
-      position: absolute;
-      border-radius: 20px;
-      top: 0;
-      right: 100%;
-      width: 100%;
-      height: 50%;
-      background-color: #f58f8f;
-      transition: all 0.3s ease;
+      right: 0%;
     }
-    &:hover{
-      &::after {
-        right: 0%;
-      }
-    }
+  }
 }
 [lang="ar"] .tab.active {
+  &::after {
+    padding: 10px 10px 10px 0px;
+    content: "يله واتس ←";
+    position: absolute;
+    border-radius: 20px;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 50%;
+    background-color: #25d366;
+    transition: all 0.3s ease;
+  }
+  &:hover {
     &::after {
-      padding: 10px 10px 10px 0px;
-      content: "يله واتس ←";
-      position: absolute;
-      border-radius: 20px;
-      top: 0;
-      right: 100%;
-      width: 100%;
-      height: 50%;
-      background-color: #25d366;
-      transition: all 0.3s ease;
+      right: 0%;
     }
-    &:hover{
-      &::after {
-        right: 0%;
-      }
-    }
+  }
 }
 [lang="ar"] .mode {
   position: absolute;
@@ -827,48 +826,46 @@ nav {
   transition: all 0.3s ease;
   overflow: hidden;
 
+  &::after {
+    padding: 10px 0px 10px 10px;
+    content: "Go WhatsApp →";
+    position: absolute;
+    border-radius: 20px;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 50%;
+    background-color: #25d366;
+    transition: all 0.3s ease;
+  }
+  &:hover {
     &::after {
-      
-      padding: 10px 0px 10px 10px;
-      content: "Go WhatsApp →";
-      position: absolute;
-      border-radius: 20px;
-      top: 0;
-      right: 100%;
-      width: 100%;
-      height: 50%;
-      background-color: #25d366;
-      transition: all 0.3s ease;
+      right: 0%;
     }
-    &:hover{
-      &::after {
-        right: 0%;
-      }
-    }
+  }
 }
 .tab.insta {
   position: relative;
   transition: all 0.3s ease;
   overflow: hidden;
 
+  &::after {
+    padding: 10px 0px 10px 10px;
+    content: "Go Instagram →";
+    position: absolute;
+    border-radius: 20px;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 50%;
+    background-color: #f58f8f;
+    transition: all 0.3s ease;
+  }
+  &:hover {
     &::after {
-      
-      padding: 10px 0px 10px 10px;
-      content: "Go Instagram →";
-      position: absolute;
-      border-radius: 20px;
-      top: 0;
-      right: 100%;
-      width: 100%;
-      height: 50%;
-      background-color: #f58f8f;
-      transition: all 0.3s ease;
+      right: 0%;
     }
-    &:hover{
-      &::after {
-        right: 0%;
-      }
-    }
+  }
 }
 .about-content P {
   font-size: 1.1rem;
@@ -920,11 +917,11 @@ nav {
 
 @media (max-width: 370px) {
   .hero-btns button {
-    font-size: .7rem;
+    font-size: 0.7rem;
     /* gap: 10px; */
     /* color: red; */
   }
-  .hero-btns{
+  .hero-btns {
     gap: 10px;
   }
 }
